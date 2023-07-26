@@ -1,8 +1,8 @@
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 
 dotenv.config();
 
-const a = 'uno dos tres'
+const a = "uno dos tres";
 const b = process.env.WEB_PORT;
 const arg = process.argv[2];
 
