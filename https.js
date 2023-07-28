@@ -1,6 +1,7 @@
 'use strict';
 
-const {get} = require('https');
+//const {get} = require('https');
+import {get} from 'https';
 
 get('https://www.google.com', (res) => {
   res.on('data', (chunk) => {
@@ -10,4 +11,3 @@ get('https://www.google.com', (res) => {
       console.log('No more data');
     })
 });
-
