@@ -1,6 +1,6 @@
 'use strict';
 
-//const {get} = require('https');
+import internals from './internals/index.js';
 import {get} from 'https';
 
 get('https://www.google.com', (res) => {
@@ -11,3 +11,12 @@ get('https://www.google.com', (res) => {
       console.log('No more data');
     })
 });
+
+const requestData = (url, data) => {
+  internals.send(url, data);
+  return internals.read();
+}
+
+const res = requestData('https://google.com', 'si data..aa');
+
+console.log(res);
