@@ -6,7 +6,7 @@ export function getFriends(req, res) {
   res.json(friends);
 }
 
-export function getFriendById(req, res) {
+export function getFriend(req, res) {
   const friendId = Number(req.params.friendId);
   const friend = friends[friendId];
   if (friend) {

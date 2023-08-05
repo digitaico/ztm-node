@@ -1,8 +1,10 @@
 import express from 'express';
-import {getMessages, postMessage} from './controllers/messages.controller.js';
-import {getFriends, getFriendById, postFriend} from './controllers/friends.controller.js';
+
+import {friendsRouter} from './routes/friends.router.js';
+import {messagesRouter} from './routes/messages.router.js';
 
 const app = express();
+
 const PORT = 3000;
 
 app.use((req, res, next) => {
@@ -12,18 +14,15 @@ app.use((req, res, next) => {
   const delta = Date.now() - start;
   console.log(`method: ${req.method} url: ${req.url} time: ${delta}ms`);
 });
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('.. Hola Perros!');
 });
 
-app.get('/messages', getMessages);
-app.post('/messages', postMessage);
-
-app.get('/friends', getFriends);
-app.get('/friends/:friendId', getFriendById);
-app.post('/friends', postFriend);
+app.use('/friends', friendsRouter);
+app.use('/messages', messagesRouter);
 
 app.listen(PORT, () => {
   console.log(`[Server]: Started and runing on port ${PORT}`);
