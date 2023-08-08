@@ -25,6 +25,12 @@ app.use((req, res, next) => {
   console.log(`method: ${req.method} url: ${req.baseUrl}${req.url} time: ${delta}ms`);
 });
 
+app.get('/', (req, res) => {
+  res.render('index', {
+    title: '--------Hoola MUndito',
+    mensaje: 'Cambio :::::Si buenas este es un parrafo largo,  es la historia de mi vida...'
+  });
+});
 app.use('/site', express.static(path.join(__dirname, 'public')));
 app.use('/friends', friendsRouter);
 app.use('/messages', messagesRouter);
